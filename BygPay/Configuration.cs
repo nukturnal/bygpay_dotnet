@@ -14,8 +14,13 @@ namespace BygPay
 		public string WithdrawStatusOveridePath { get; set; }
 		public string WithdrawStatusPath { get; set; }
 
-        public Configuration()
+        public const string SDK_VERSION = "0.0.1";
+
+        public Configuration(string BaseUrl, string ApiKey)
         {
+            this.BaseUrl = BaseUrl;
+            this.ApiKey = ApiKey;
+
             DepositMobilePath = "/deposits/mobile";
             DepositStatusOveridePath = "/deposits/status-overide";
             DepositStatusPath = "/deposits";
@@ -24,5 +29,19 @@ namespace BygPay
             WithdrawStatusOveridePath = "/withdrawals/status-overide";
             WithdrawStatusPath = "/withdrawals";
         }
+
+        public string GetDepositMobilePath(){
+            return BaseUrl + DepositMobilePath;
+        }
+
+		public string GetDepositStatusOveridePath()
+		{
+			return BaseUrl + DepositStatusOveridePath;
+		}
+
+		public string GetDepositStatusPath()
+		{
+			return BaseUrl + DepositStatusPath;
+		}
     }
 }
